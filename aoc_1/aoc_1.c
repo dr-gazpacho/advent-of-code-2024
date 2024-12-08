@@ -47,6 +47,26 @@ int compare_and_sum(int *list_one, int *list_two, int length) {
     return sum;
 }
 
+int compare_and_count(int *list_one, int *list_two, int length) {
+    int similarity_score = 0;
+    int count_of_occurrences = 0;
+    int list_one_val;
+
+    for(int loop_count = 0; loop_count < length; loop_count++) {
+        list_one_val = list_one[loop_count];
+        for(int current_index = 0; current_index < length; current_index++) {
+            int current_val = list_two[current_index];
+            if (list_one_val == current_val) {
+                count_of_occurrences++;
+            }
+        }
+        similarity_score += list_one_val * count_of_occurrences;
+        count_of_occurrences = 0;
+    }
+
+    return similarity_score;
+}
+
 
 int main(void) {
     int list_one[LOCATION_ID_LENGTH];
@@ -56,6 +76,7 @@ int main(void) {
     int *ptr_current_list_index = &current_list_index;
 
     int difference = 0;
+    int similarity_score;
 
     //args are defined in this as pointers but here are just the names of list_one and list_two
     //C treats the variable name of a list as the pointer to the first element
@@ -64,7 +85,10 @@ int main(void) {
     bubble_sort(list_one, LOCATION_ID_LENGTH);
     bubble_sort(list_two, LOCATION_ID_LENGTH);
 
+    //part one
     difference = compare_and_sum(list_one, list_two, LOCATION_ID_LENGTH);
-
+    //part two
+    similarity_score = compare_and_count(list_one, list_two, LOCATION_ID_LENGTH);
+    
     return 0;
 }
