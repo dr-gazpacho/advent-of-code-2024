@@ -1,2 +1,0 @@
-### I still struggle with C
-But I'm going to try to do all these fun little puzzles and see how far I get. I'm not going to compete on the leader board because I'm working slow and will require lots of help from the internet. Smarter tomorrow than I am today.
